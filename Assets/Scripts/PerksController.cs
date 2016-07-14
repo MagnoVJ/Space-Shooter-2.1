@@ -8,13 +8,12 @@ public class PerksController : MonoBehaviour {
 
 	enum Perks { TRISHOT, SHIELD, SIGHT };
 
-	//private int numberOfTrishotPerk;
-	//private int numberOfShieldPerk;
-	//private int numberOfSightPerk;
-
 	private GameObject sliderTriShot;
 	private GameObject sliderShield;
 	private GameObject sphereImmun;
+    private GameObject sightShot;
+
+    private const int QUANTSIGHTSHOTS = 3; //Quntidade de sight shots
 
 	private List<Perks> perksVector;
 
@@ -22,27 +21,30 @@ public class PerksController : MonoBehaviour {
 	public bool triShotTimeActive;
 	[HideInInspector]
 	public bool shieldTimeActive;
+    [HideInInspector]
+    public bool sightTimeActive;
 
 	void Start() {
 
 		sliderTriShot = GameController.sliderTriShotGC;
 		sliderShield = GameController.sliderShieldGC;
 		sphereImmun = GameController.sphereImmunGC;
+        sightShot = GameController.sightShotGC;
 
 		perksVector = new List<Perks>();
 
-		//numberOfTrishotPerk = 0;
-		//numberOfShieldPerk = 0;
-		//numberOfSightPerk = 0;
-
 		triShotTimeActive = false;
 		shieldTimeActive = false;
+        sightTimeActive = false;
 
 		sliderTriShot.GetComponent<Slider>().value = 0;
 		sliderShield.GetComponent<Slider>().value = 0;
 
+        sightShot.transform.FindChild("Quant Shots").gameObject.GetComponent<Text>().text = "";
+
 		sliderTriShot.SetActive(false);
 		sliderShield.SetActive(false);
+        sightShot.SetActive(false);
 
 	}
 
@@ -107,6 +109,10 @@ public class PerksController : MonoBehaviour {
 				sliderShield.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5.22998f, -77.85999f);
 				break;
 
+            case Perks.SIGHT:
+                sightShot.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5.22998f, -77.85999f);
+                break;
+
 			}
 
 		}
@@ -123,9 +129,33 @@ public class PerksController : MonoBehaviour {
 				sliderShield.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5.22998f, -97.85995f);
 				break;
 
+            case Perks.SIGHT:
+                sightShot.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5.22998f, -97.85995f);
+                break;
+
 			}
 
 		}
+
+        if (perksVector.Count > 2) {
+
+            switch (perksVector[2]) {
+
+            case Perks.TRISHOT:
+                sliderTriShot.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5.22998f, -117.86f);
+                break;
+
+            case Perks.SHIELD:
+                sliderShield.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5.22998f, -117.86f);
+                break;
+
+            case Perks.SIGHT:
+                sightShot.GetComponent<RectTransform>().anchoredPosition = new Vector2(-5.22998f, -117.86f);
+                break;
+
+            }
+
+        }
 
 		//Shield of immunity
 		if (shieldTimeActive)
@@ -157,4 +187,15 @@ public class PerksController : MonoBehaviour {
 		shieldTimeActive = true;
 		
 	}
+
+    public void ActiveSight() {
+
+        if (sightTimeActive == false)
+            perksVector.Add(Perks.SIGHT);
+
+        sightShot.SetActive(true);
+        sightShot.transform.FindChild("Quant Shots").gameObject.GetComponent<Text>().text = QUANTSIGHTSHOTS.ToString();
+        sightTimeActive = true;
+        
+    }
 }

@@ -17,7 +17,7 @@ public class TriShotMovement : MonoBehaviour {
 
 	void FixedUpdate() {
 
-		gameObject.transform.Rotate(new Vector3(0, 0, 1), 1.0f);
+        gameObject.transform.Rotate(new Vector3(0, 0, 1), 1.0f * (Time.deltaTime / Time.fixedDeltaTime));
 
 	}
 

@@ -54,6 +54,8 @@ public class GameController : MonoBehaviour{
 	public static GameObject sliderShieldGC;
 	[HideInInspector]
 	public static GameObject sphereImmunGC;
+    [HideInInspector]
+    public static GameObject sightShotGC;
 
 	void Awake() {
 
@@ -62,6 +64,9 @@ public class GameController : MonoBehaviour{
 
 		sliderShieldGC = GameObject.Find("SliderShield");
 		sliderShieldGC.GetComponent<Slider>().maxValue = 15;
+
+        sightShotGC = GameObject.Find("InstantShot");
+        sightShotGC.transform.FindChild("Quant Shots").gameObject.GetComponent<Text>().text = "4";
 
 		sphereImmunGC = GameObject.Find("Sphere of Immunity");
 
@@ -277,6 +282,18 @@ public class GameController : MonoBehaviour{
 			StartCoroutine("LifeOfTextAnimationCoroutine", tmpTA);			
 		
 		}
+        else if (hazard.CompareTag("AimTag")) {
+
+            TextAnimation tmpTA = new TextAnimation();
+            tmpTA.safText = (GameObject)Instantiate(sAFAsteroid, camera.WorldToScreenPoint(new Vector3(hazard.transform.position.x + 20 * Time.fixedDeltaTime, hazard.transform.position.y, hazard.transform.position.z + 20 * Time.fixedDeltaTime)), Quaternion.Euler(0.0f, 0.0f, 0.0f));
+            tmpTA.safText.GetComponent<RectTransform>().sizeDelta = new Vector2(100.0f, 100.0f);
+            tmpTA.safText.GetComponent<Text>().text = "INST-SHOT";
+            tmpTA.safText.GetComponent<Text>().color = new Color(255.0f / 255.0f, 0.0f / 255.0f, 0.0f / 255.0f);
+            tmpTA.safText.transform.SetParent(canvas.transform);
+
+            StartCoroutine("LifeOfTextAnimationCoroutine", tmpTA);			
+
+        }
 
 	}
 

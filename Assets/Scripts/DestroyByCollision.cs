@@ -19,7 +19,7 @@ public class DestroyByCollision : MonoBehaviour {
 		if (GameController.actualState == State.PLAYING) { 
 
 			//Verifica se o colisão está sendo feita com o Boundary e se o objeto atual é um Enemy e o outro objeto é um BoltEnemy ou se o outro objeto é um Enemy se for verdadeiro a destruição por colisão deve ser ignorada
-			if (other.tag != "SphereTag" && other.tag != "Shield" && other.tag != "BoxEnemyPositioning" && other.tag != "Heart" && other.tag != "TriShotBlue" && other.tag != "Boundary" && !((gameObject.CompareTag("Enemy") && other.CompareTag("BoltEnemy")) || (gameObject.CompareTag("Enemy") && other.CompareTag("Enemy")))) {
+			if (other.tag != "AimTag" && other.tag != "SphereTag" && other.tag != "Shield" && other.tag != "BoxEnemyPositioning" && other.tag != "Heart" && other.tag != "TriShotBlue" && other.tag != "Boundary" && !((gameObject.CompareTag("Enemy") && other.CompareTag("BoltEnemy")) || (gameObject.CompareTag("Enemy") && other.CompareTag("Enemy")))) {
 
 				//Verifica se a colisão está sendo feita entre Enemy e Asteroid, também caso verdadeiro a colisão deve ser ignorada
 				if (!((gameObject.CompareTag("Asteroid") && other.CompareTag("Asteroid")) || (gameObject.CompareTag("Enemy") && other.CompareTag("Asteroid")) || (gameObject.CompareTag("Asteroid") && other.CompareTag("Enemy")))) {

@@ -46,6 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AccelerateController.cs" />
+     <Compile Include="Assets\Scripts\AimAnimation.cs" />
+     <Compile Include="Assets\Scripts\AimCollider.cs" />
+     <Compile Include="Assets\Scripts\AimMovement.cs" />
+     <Compile Include="Assets\Scripts\AimSimbolLocation.cs" />
      <Compile Include="Assets\Scripts\AsteroidSpawner.cs" />
      <Compile Include="Assets\Scripts\Boundary.cs" />
      <Compile Include="Assets\Scripts\DestroyByCollision.cs" />
@@ -61,6 +65,7 @@
      <Compile Include="Assets\Scripts\HeartCollider.cs" />
      <Compile Include="Assets\Scripts\HeartMovement.cs" />
      <Compile Include="Assets\Scripts\HeartSpawner.cs" />
+     <Compile Include="Assets\Scripts\InstshotController.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\MoveBolt.cs" />
      <Compile Include="Assets\Scripts\MoveLeftController.cs" />
@@ -73,6 +78,7 @@
      <Compile Include="Assets\Scripts\ShieldMovement.cs" />
      <Compile Include="Assets\Scripts\ShieldSpawner.cs" />
      <Compile Include="Assets\Scripts\ShootController.cs" />
+     <Compile Include="Assets\Scripts\SightSpawner.cs" />
      <Compile Include="Assets\Scripts\SimpleTouchAreaButton.cs" />
      <Compile Include="Assets\Scripts\SimpleTouchPad.cs" />
      <Compile Include="Assets\Scripts\SphereDestroyAnyObject.cs" />
