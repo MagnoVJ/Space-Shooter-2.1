@@ -42,10 +42,11 @@ public class Enemy01Controller : MonoBehaviour {
 		switch (currentState) {
 
 			//case StateEnemy.MOVINGTOPOSITION:
-			case StateEnemy.LOOKINGFORPOSITION: 
+			//case StateEnemy.LOOKINGFORPOSITION: 
 			case StateEnemy.LOOKINGFORPLAYER: {
 
-					if (fieldOfView.seeingPlayer && verifyIfEnemyInsideBox()) {
+                    //if (fieldOfView.seeingPlayer && verifyIfEnemyInsideBox()) {
+					if (fieldOfView.seeingPlayer) {
 
 						if (Time.time > nextFire && GameController.actualState == State.PLAYING && Time.timeScale == 1) {
 							nextFire = Time.time + fireRate;
@@ -70,10 +71,9 @@ public class Enemy01Controller : MonoBehaviour {
 
 					if (GameController.actualState == State.PLAYING) { 
 
-						//find the vector pointing from our position to the target
 						direction = (destino - rigidbody.transform.position).normalized;
-						//create the rotation we need to be in to look at the target
-						lookRotation = Quaternion.LookRotation(direction);
+
+                        lookRotation = Quaternion.LookRotation(direction);
 						rigidbody.transform.rotation = Quaternion.RotateTowards(rigidbody.transform.rotation, lookRotation, smoothnessRotateMove * (Time.deltaTime / Time.fixedDeltaTime));
 
 						if ((int)rigidbody.transform.eulerAngles.y == (int)lookRotation.eulerAngles.y) { 

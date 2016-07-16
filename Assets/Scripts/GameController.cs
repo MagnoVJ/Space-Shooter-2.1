@@ -70,6 +70,10 @@ public class GameController : MonoBehaviour{
 
 		sphereImmunGC = GameObject.Find("Sphere of Immunity");
 
+        double x = (1.5 * 11.48057) / ((double)Screen.height / (double)Screen.width);
+
+        GameObject.Find("Box Enemy Positioning").transform.localScale = new Vector3((float)x, GameObject.Find("Box Enemy Positioning").transform.localScale.y, GameObject.Find("Box Enemy Positioning").transform.localScale.z);
+
 	}
 
 	void Start() {
@@ -100,7 +104,7 @@ public class GameController : MonoBehaviour{
 		camera = Camera.main;
 		canvas = GameObject.FindGameObjectWithTag("Canvas");
 
-	}
+    }
 
 	void Update(){
 

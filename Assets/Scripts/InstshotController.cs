@@ -40,6 +40,8 @@ public class InstshotController : MonoBehaviour {
                     insAim.GetComponent<AimSimbolLocation>().player = gameObject;
                     insAim.GetComponent<AimSimbolLocation>().inimigo = objectHit.gameObject;
 
+                    gameObject.GetComponent<PlayerController>().enemyBeingTargeted = objectHit.gameObject;
+                    
                 }
 
             }

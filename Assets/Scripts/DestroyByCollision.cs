@@ -57,4 +57,16 @@ public class DestroyByCollision : MonoBehaviour {
 		}
 	}
 
+    //Somente usado por Enemy
+    public void DestroyInstantlyEnemy() {
+
+        gameController.UpdateScorePlayer(gameObject);
+        gameController.AnimationScoreText(gameObject);
+
+        Instantiate(explosion, gameObject.GetComponent<Transform>().position, gameObject.GetComponent<Transform>().rotation);
+
+        Destroy(gameObject.transform.parent.gameObject);
+
+    }
+
 }

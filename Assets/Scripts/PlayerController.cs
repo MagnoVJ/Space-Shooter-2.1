@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	[HideInInspector]
 	private float smoothedDegreeMoveRight = 0;
 	private float nextFire;
+    private float nextFireForAim;
 
 	public float speedAccelerate;
 	public float smoothnessAccelerate;
@@ -29,6 +30,9 @@ public class PlayerController : MonoBehaviour {
 
 	public Boundary boundary;
 
+    [HideInInspector]
+    public GameObject enemyBeingTargeted;
+
 	void Awake() {
 		ParticleSystem.EmissionModule em = GameController.GetChildGameObject(gameObject, "engine_enemy").GetComponent<ParticleSystem>().emission; em.enabled = false;
 		ParticleSystem.EmissionModule eml = GameController.GetChildGameObject(gameObject, "engine_left").GetComponent<ParticleSystem>().emission; eml.enabled = false;
@@ -41,18 +45,21 @@ public class PlayerController : MonoBehaviour {
 		smoothnessRotateMoveRight = smoothnessRotateMoveLeft;
 		degreesRotateMoveLeft *= -1;
 		nextFire = 0.0f;
+        nextFireForAim = 0.0f;
 
 		accelerateController = GameObject.Find("Accelerate Button").GetComponent<AccelerateController>();
 		moveLeftController = GameObject.Find("Move Left Button").GetComponent<MoveLeftController>();
 		moveRightController = GameObject.Find("Move Right Button").GetComponent<MoveRightController>();
 		shootController = GameObject.Find("Shoot Button").GetComponent<ShootController>();
 
+        enemyBeingTargeted = null;
+
 	}
 
 	void Update() {
 
 		//Verificacao caso o botao shot está sendo pressionado
-		if (shootController.pressed) {
+        if (shootController.pressed && !ThereIsAimInScene() && ((Time.time - nextFireForAim) > 1)) {
 
 			if (Time.time > nextFire && GameController.actualState == State.PLAYING && Time.timeScale == 1) {
 
@@ -70,6 +77,12 @@ public class PlayerController : MonoBehaviour {
 			}
 
 		}
+        else if (shootController.pressed && ThereIsAimInScene() && enemyBeingTargeted != null) {
+            GameController.GetChildGameObject(enemyBeingTargeted, "Enemy_1_Correct_Rotation").GetComponent<DestroyByCollision>().DestroyInstantlyEnemy();
+            nextFireForAim = Time.time;
+            gameObject.GetComponent<PerksController>().quantSightShots -= 1;
+        }
+        
 
 	}
 
@@ -161,5 +174,16 @@ public class PlayerController : MonoBehaviour {
 		Instantiate(shot, shotSpawn3.transform.position, shotSpawn3.transform.rotation);
 
 	}
+
+    private bool ThereIsAimInScene() {
+
+        GameObject[] gameobjects = GameObject.FindGameObjectsWithTag("AimSymbolTag");
+
+        if (gameobjects.Length > 0)
+            return true;
+        else
+            return false;
+
+    }
 
 }

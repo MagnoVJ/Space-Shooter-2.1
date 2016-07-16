@@ -24,6 +24,8 @@ public class PerksController : MonoBehaviour {
     [HideInInspector]
     public bool sightTimeActive;
 
+    public int quantSightShots;
+
 	void Start() {
 
 		sliderTriShot = GameController.sliderTriShotGC;
@@ -96,6 +98,27 @@ public class PerksController : MonoBehaviour {
 			shieldTimeActive = false;
 
 		}
+
+        //SIGHTSHOT
+        sightShot.transform.FindChild("Quant Shots").gameObject.GetComponent<Text>().text = quantSightShots.ToString();
+
+        if (quantSightShots == 0) {
+
+            if (sightShot.active)
+                sightShot.SetActive(false);
+
+            if (sightTimeActive) {
+
+                for (int i = 0; i < perksVector.Count; i++)
+                    if (perksVector[i] == Perks.SIGHT)
+                        perksVector.RemoveAt(i);
+
+            }
+
+            sightTimeActive = false;
+
+        }
+
 
 		if (perksVector.Count > 0) { 
 
@@ -194,7 +217,8 @@ public class PerksController : MonoBehaviour {
             perksVector.Add(Perks.SIGHT);
 
         sightShot.SetActive(true);
-        sightShot.transform.FindChild("Quant Shots").gameObject.GetComponent<Text>().text = QUANTSIGHTSHOTS.ToString();
+        quantSightShots = QUANTSIGHTSHOTS;
+        sightShot.transform.FindChild("Quant Shots").gameObject.GetComponent<Text>().text = quantSightShots.ToString();
         sightTimeActive = true;
         
     }
