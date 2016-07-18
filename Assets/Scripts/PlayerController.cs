@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate() {
 
 		//Verificacao caso o botao acelerar esteja sendo pressionado
-		if (accelerateController.pressed) {
+		if (accelerateController.pressed && GameController.actualState == State.PLAYING) {
 
 			//Ativa o flare do ship engine
 			ParticleSystem.EmissionModule em = GameController.GetChildGameObject(gameObject, "engine_enemy").GetComponent<ParticleSystem>().emission; em.enabled = true;
@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Verificacao caso o botao mover esquerda esteja sendo pressionado
-		if (moveLeftController.pressed) {
+        if (moveLeftController.pressed && GameController.actualState == State.PLAYING) {
 
 			//Ativa o flare do ship engine
 			ParticleSystem.EmissionModule emr = GameController.GetChildGameObject(gameObject, "engine_Right").GetComponent<ParticleSystem>().emission; emr.enabled = true;
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		//Verificacao caso o botao mover direita esteja sendo pressionado
-		if (moveRightController.pressed) {
+        if (moveRightController.pressed && GameController.actualState == State.PLAYING) {
 
 			//Ativa o flare do ship engine
 			ParticleSystem.EmissionModule eml = GameController.GetChildGameObject(gameObject, "engine_left").GetComponent<ParticleSystem>().emission; eml.enabled = true;
