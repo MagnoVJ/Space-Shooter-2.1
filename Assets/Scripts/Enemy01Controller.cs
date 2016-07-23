@@ -52,6 +52,11 @@ public class Enemy01Controller : MonoBehaviour {
 							nextFire = Time.time + fireRate;
 							GameObject shotSpawn = GameController.GetChildGameObject(gameObject, "Shot_Spawner");
 							Instantiate(shot, shotSpawn.transform.position, shotSpawn.transform.rotation);
+
+                            if (!ActDesactSoundController.AudioActivate)
+                                gameObject.GetComponent<AudioSource>().mute = true;
+
+                            gameObject.GetComponent<AudioSource>().Play();
 						}
 
 					}

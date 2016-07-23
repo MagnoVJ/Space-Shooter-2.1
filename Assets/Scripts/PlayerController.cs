@@ -74,6 +74,11 @@ public class PlayerController : MonoBehaviour {
 				if (gameObject.GetComponent<PerksController>().triShotTimeActive)
 					InstantiatePlusTwoShot(shotSpawn2, shotSpawn3);
 
+                if (!ActDesactSoundController.AudioActivate)
+                    gameObject.GetComponent<AudioSource>().mute = true;
+
+                gameObject.GetComponent<AudioSource>().Play();
+
 			}
 
 		}

@@ -45,13 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\LoadManager.cs" />
+     <Compile Include="Assets\AudioVerificationExplosion.cs" />
      <Compile Include="Assets\Scripts\AccelerateController.cs" />
+     <Compile Include="Assets\Scripts\ActDesactSoundController.cs" />
      <Compile Include="Assets\Scripts\AimAnimation.cs" />
      <Compile Include="Assets\Scripts\AimCollider.cs" />
      <Compile Include="Assets\Scripts\AimMovement.cs" />
      <Compile Include="Assets\Scripts\AimSimbolLocation.cs" />
      <Compile Include="Assets\Scripts\AsteroidSpawner.cs" />
+     <Compile Include="Assets\Scripts\AudioController.cs" />
+     <Compile Include="Assets\Scripts\AudioControllerLevels.cs" />
      <Compile Include="Assets\Scripts\Boundary.cs" />
      <Compile Include="Assets\Scripts\DestroyByCollision.cs" />
      <Compile Include="Assets\Scripts\DestroyByCollisionForBolt.cs" />
@@ -67,6 +70,8 @@
      <Compile Include="Assets\Scripts\HeartMovement.cs" />
      <Compile Include="Assets\Scripts\HeartSpawner.cs" />
      <Compile Include="Assets\Scripts\InstshotController.cs" />
+     <Compile Include="Assets\Scripts\Level0_1GameController.cs" />
+     <Compile Include="Assets\Scripts\LoadManager.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
      <Compile Include="Assets\Scripts\MoveBolt.cs" />
      <Compile Include="Assets\Scripts\MoveLeftController.cs" />
@@ -74,6 +79,7 @@
      <Compile Include="Assets\Scripts\PerksController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerImmunity.cs" />
+     <Compile Include="Assets\Scripts\QuitApplication.cs" />
      <Compile Include="Assets\Scripts\Rotate.cs" />
      <Compile Include="Assets\Scripts\RotateBackgroundSymbol.cs" />
      <Compile Include="Assets\Scripts\ShieldCollider.cs" />

@@ -257,6 +257,9 @@ public class GameController : MonoBehaviour{
 			tmpTA.safText.GetComponent<Text>().color = new Color(255.0f / 255.0f, 0.0f / 255.0f, 0.0f / 255.0f);
 			tmpTA.safText.transform.SetParent(canvas.transform);
 
+            //PowerUp Sound Effect
+            gameObject.GetComponent<AudioSource>().Play();
+
 			StartCoroutine("LifeOfTextAnimationCoroutine", tmpTA);
 
 		} 
@@ -269,6 +272,9 @@ public class GameController : MonoBehaviour{
 			tmpTA.safText.GetComponent<Text>().text = "TRI-SHOT";
 			tmpTA.safText.GetComponent<Text>().color = new Color(0.0f / 255.0f, 146.0f / 255.0f, 184.0f / 255.0f);
 			tmpTA.safText.transform.SetParent(canvas.transform);
+
+            //PowerUp Sound Effect
+            gameObject.GetComponent<AudioSource>().Play();
 
 			StartCoroutine("LifeOfTextAnimationCoroutine", tmpTA);
 
@@ -283,6 +289,9 @@ public class GameController : MonoBehaviour{
 			tmpTA.safText.GetComponent<Text>().color = new Color(255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
 			tmpTA.safText.transform.SetParent(canvas.transform);
 
+            //PowerUp Sound Effect
+            gameObject.GetComponent<AudioSource>().Play();
+
 			StartCoroutine("LifeOfTextAnimationCoroutine", tmpTA);			
 		
 		}
@@ -294,6 +303,9 @@ public class GameController : MonoBehaviour{
             tmpTA.safText.GetComponent<Text>().text = "INST-SHOT";
             tmpTA.safText.GetComponent<Text>().color = new Color(255.0f / 255.0f, 0.0f / 255.0f, 0.0f / 255.0f);
             tmpTA.safText.transform.SetParent(canvas.transform);
+
+            //PowerUp Sound Effect
+            gameObject.GetComponent<AudioSource>().Play();
 
             StartCoroutine("LifeOfTextAnimationCoroutine", tmpTA);			
 
@@ -445,6 +457,11 @@ public class GameController : MonoBehaviour{
 				Time.timeScale = 1;
 				pausedBackground.SetActive(false);
 			}
+
+            if (!ActDesactSoundController.AudioActivate)
+                GameObject.Find("Pausar").GetComponent<AudioSource>().mute = true;
+
+            GameObject.Find("Pausar").GetComponent<AudioSource>().Play();
 
 		}
 	

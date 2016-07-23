@@ -24,5 +24,11 @@ public class LoadManager : MonoBehaviour {
 
     }
 
+    public void LoadSceneLevel0_1() {
+
+        SceneManager.LoadScene("Level 0.1");
+
+    }
+
    
 }
